@@ -1,0 +1,12 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.w-100 {
+    object-fit: cover;
+    max-width: 100vmax;
+    min-height: 93vh;
+    max-height: 93vh;
+}

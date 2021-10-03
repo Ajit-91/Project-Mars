@@ -1,0 +1,47 @@
+#weather{
+    background-image: 
+    /* linear-gradient(rgba(0, 0, 0, 0.288), rgba(0, 0, 0, 0.836)), */
+    url("https://nerdist.com/wp-content/uploads/2020/07/4K-Mars-Body-Image-2.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+    padding-top: 8rem;
+    
+}
+
+#scroll{
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: xx-large;
+}
+/* PAST 7 DAYS INFO */
+.pastCard{
+    margin-top:100px ;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap:8px;
+    justify-content:space-around;
+}
+#pastInfo{
+    font-size:large;
+    text-transform: uppercase;
+    padding: 10px 0;
+    text-align: center; 
+    color: white;
+    /*  */
+    border: 1px solid rgba(255, 255, 255, 0.445);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.123);
+    backdrop-filter: blur(9px);
+    box-shadow: 2px 2px 20px 5px rgba(0, 0, 0, 0.397);
+    min-height: 100%;   
+}
+
+@media screen and (max-width : 991px) {
+    .allinfo{
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
