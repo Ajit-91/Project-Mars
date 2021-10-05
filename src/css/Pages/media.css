@@ -1,0 +1,42 @@
+.media{
+    padding: 8rem 0;
+    background-color: #860505;
+    min-height: 100vh;
+}
+
+/* IMAGE CONTAINER */
+.imgcontainer{
+    border-radius: 10px;
+    background-color: rgb(255, 254, 254);
+    backdrop-filter: blur(20px);
+    box-shadow: 2px 2px 20px 5px rgba(0, 0, 0, 0.397);
+}
+
+.solvalue{
+    width: 80%;
+    text-align: center;
+}
+
+.solbtn{
+    max-width: fit-content;
+}
+
+
+.imgrow{
+    overflow: auto;
+    --bs-gutter-x: 0;
+}
+
+.imgcol{
+    padding: 1px;
+}
+.dataimg{
+    width: 100%;
+    height: 219.6px;
+}
+
+.noimg{
+    text-align: center;
+    padding: 30px;
+    font-size: larger;
+}

@@ -1,0 +1,48 @@
+#nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transition: background-color 0.3s ease-in-out;
+    z-index: 2;
+}
+.navbar-brand a{
+    padding: 0;
+}
+.navbar-light .navbar-brand {
+    color: inherit;
+    margin-right: 5px;
+}
+
+.activeNavLinks{
+    border-bottom: 3px solid crimson;
+}
+
+a{
+    text-decoration: none;
+    padding:0 10px;
+    margin-right:10px;
+    font-weight: 600;
+
+}
+
+a:-webkit-any-link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .linkContainer{
+      display: flex;
+      width: 100%;
+      justify-content: flex-end;
+  }
+
+  @media screen and (max-width: 575px) {
+      .linkContainer{
+          justify-content: center;
+          align-items: center;
+      }
+      a{
+          margin: 5px 0;
+      }
+  }
