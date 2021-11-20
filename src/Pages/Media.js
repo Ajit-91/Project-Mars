@@ -6,36 +6,31 @@ import {
   Form,
   ButtonGroup,
   Button,
-  Image
 } from "react-bootstrap";
 import "../css/Pages/media.css";
+import ImageData from "../components/Media/DisplayImages";
 
 export default function Media() {
-  const [images, setImages] = useState();
   const [camera, setCamera] = useState("NAVCAM_LEFT");
-  const [sol, setSol] = useState();
+  const [disable, setDiabled] = useState(true);
+  const [sol, setSol] = useState(0);
+  const [latestSol, setLatestSol] = useState();
+
 
   useEffect(() => {
     fetch(
-      `https://api.nasa.gov/mars-photos/api/v1/rovers/perseverance/photos?sol=${sol}&camera=${camera}&api_key=wNpg5jFJHVhHYBNMaWgrKxdUhAZE4kMqdHL3a2Fm`
+      "https://mars.nasa.gov/rss/api/?feed=weather&category=mars2020&feedtype=json"
     )
       .then((res) => res.json())
-      .then((mediaData) => {
-        setImages(mediaData?.photos);
-      });
-  }, [camera, sol]);
-
-  useEffect(() =>
-  {
-    fetch("https://mars.nasa.gov/rss/api/?feed=weather&category=mars2020&feedtype=json")
-      .then(res => res.json())
-      .then(weatherData =>
-      {
+      .then((weatherData) => {
         setSol(weatherData?.sols[6].sol);
-        
-      })
+        setLatestSol(weatherData?.sols[6].sol);
+      });
+  }, []);
 
-  }, [setSol])
+  useEffect(() => {
+    setDiabled(sol >= latestSol ? true : false);
+  }, [disable,latestSol,sol]);
 
   function handleSelectChange(event) {
     setCamera(event.target.value);
@@ -83,16 +78,17 @@ export default function Media() {
                   >
                     -
                   </Button>
-                  <Form.Control
+                  <input
                     placeholder={sol}
                     className="solvalue"
                     value={sol}
-                    onChange={(e)=>setSol(e.target.value)}
-                    
-                  ></Form.Control>
+                    disabled
+                    onChange={(e) => setSol(e.target.value)}
+                  ></input>
                   <Button
                     id="solbtn"
                     variant="secondary"
+                    disabled={disable}
                     onClick={() => setSol(sol + 1)}
                   >
                     +
@@ -102,27 +98,9 @@ export default function Media() {
             </Form.Group>
           </Col>
         </Row>
-        <Row className="pt-3"></Row>
-        {images?.length === 0 ? (
-          <Row>
-            <Col className="noimg">NO IMAGES AVAILABLE</Col>
-          </Row>
-        ) : (
-          <Row className="imgrow py-5" xs={2} sm={3} md={4} xl={5}>
-            {images?.map((data, index) => {
-              return (
-                <Col className="imgcol" key={index}>
-                  <Image
-                    className="dataimg"
-                    src={data?.img_src}
-                    alt="rover"
-                    rounded
-                  />
-                </Col>
-              );
-            })}
-          </Row>
-        )}
+        <Row className="pt-3">
+          <ImageData currentSol={sol} currentCam={camera} />
+        </Row>
       </Container>
     </div>
   );
