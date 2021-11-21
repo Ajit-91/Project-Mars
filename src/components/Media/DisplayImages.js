@@ -9,7 +9,7 @@ export default function DisplayImages(props) {
 
   useEffect(() => {
     fetch(
-      `https://api.nasa.gov/mars-photos/api/v1/rovers/perseverance/photos?sol=${props.currentSol}&camera=${props.currentCam}&api_key=wNpg5jFJHVhHYBNMaWgrKxdUhAZE4kMqdHL3a2Fm`
+      `https://api.nasa.gov/mars-photos/api/v1/rovers/perseverance/photos?sol=${props.currentSol}&camera=${props.currentCam}&api_key=${process.env.REACT_APP_API_KEY}`
     )
       .then((res) => res.json())
       .then((mediaData) => {

@@ -9,12 +9,11 @@ import { Container } from "react-bootstrap"
 function Home()
 {
   const [angle, setAngle] = useState(0);
-
   const [data, setData] = useState("");
   useEffect(() =>
   {
     fetch(
-      "https://api.nasa.gov/planetary/apod?api_key=wNpg5jFJHVhHYBNMaWgrKxdUhAZE4kMqdHL3a2Fm")
+      `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_API_KEY}`)
       .then(res => res.json())
       .then((result) =>
       {
@@ -61,7 +60,7 @@ function Home()
             CardData.map((val, i) =>
             {
               return (
-                <FactCard num={i + 1} title={val.title} img={val.image} text={val.text} />
+                <FactCard key={i} num={i + 1} title={val.title} img={val.image} text={val.text} />
               )
             })
           }
